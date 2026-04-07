@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -99,29 +64,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using Measles data set</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="data-context" class="level2">
+<h2 class="anchored" data-anchor-id="data-context">Data Context</h2>
+<p>The data includes information on reported cases of measles and rubella. The data was downloaded from the World Health Organization on June 12, 2025. The number of reported measles and rubella cases is collected and reported by WHO member states. Records span multiple years, containing yearly and monthly data across different regions and countries around the world. In the data set, each country is identified by name and ISO3 code. Measles and rubella cases are classified by the following: suspected, clinically-compatible, epidemiologically-linked, and laboratory-confirmed. The data was curated to support analyses in global trends over time such as seasonal patterns of outbreaks, healthcare capacity, and regional measles/rubella burden. From WHO’s data collection, the data is cleaned and organized into CSV files.</p>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
+<p>In the cleaning of the data, the datatypes of the variables in the monthly data set from “year” to “discarded” were converted to numeric so they can be used for calculations and analysis. In both the monthly and yearly data sets, column names are renamed. the clean_names() function is used to convert the names to snake_case. In the monthly data set, some of the columns names were also explicitly renamed so that their names were more descriptive. For example, the variable name “na” was renamed as “measles_lab_confirmed”. From the cleaning script, no new variables were created. Variables were modified for organizational purposes and to have more clear and meaningful name.</p>
+</section>
+<section id="research-questions-with-original-data" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions-with-original-data">Research Questions with Original Data</h2>
+<ol type="1">
+<li>How does the measles incidence rate relate to total population size across regions?</li>
+<li>Do measles and rubella cases peak in the same months across countries?</li>
+</ol>
+</section>
+<section id="research-questions-with-supplemental-data" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions-with-supplemental-data">Research Questions with Supplemental Data</h2>
+<ol start="3" type="1">
+<li>How is measles vaccination rate associated with measles incidence rate by region?</li>
+<li>Are weather (ex: temperature, rainfall) patterns associated with seasonal peaks in measles cases across different regions?</li>
+</ol>
+</section>
+<section id="data-visualization-sketches" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-sketches">Data Visualization Sketches</h2>
+<p>Related to research questions 1 and 2: <img src="measles-step-1-data-visuals.png" class="img-fluid" alt="Data Visualization Sketches"></p>
 </section>
 
 </main>
